@@ -1,0 +1,23 @@
+#include <iostream>
+#include <algorithm>
+#include <type_traits>
+using namespace std;
+class A {
+public:
+    void funkcjaA() {
+
+    }
+};
+
+class B : public A {
+public:
+    void funkcjaB() {
+    }
+};
+
+int main()
+{
+    B b;
+    b.funkcjaA();
+    b.funkcjaB();
+}

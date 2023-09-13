@@ -1,0 +1,34 @@
+#include <iostream>
+#include <algorithm>
+#include <type_traits>
+using namespace std;
+
+class A {
+protected:
+    template<typename T> T values(){
+        char t1 = 'g';
+        double t2 = (double)23.5;
+        int t3 = 5;
+        if (std::is_same<T, char>::value) {
+            return t1;
+        }
+        if (std::is_same<T, double>::value) {
+            return t2;
+        }
+        if (std::is_same<T, int>::value) {
+            return t3;
+        }
+    }
+public:
+    void pokaz_t() {
+        cout << values<double>();
+        cout << values<int>();
+        cout << values<char>();
+    }
+};
+
+int main()
+{
+    A a;
+    a.pokaz_t();
+}

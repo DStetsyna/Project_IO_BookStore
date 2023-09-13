@@ -1,0 +1,50 @@
+#include <iostream>
+
+using namespace std;
+
+class A {
+
+public:
+	 int mi_public_liczba=1;
+
+	int* pokazLiczbe() {
+		static int values[3];
+		values[0] = mi_public_liczba;
+		values[1] = mi_prot_liczba;
+		values[2] = mi_priv_liczba;
+		return {
+			values
+		};
+	}
+	void przypiszWartosc(int pub,int prot,int priv) {
+		mi_public_liczba = pub;
+		mi_prot_liczba = prot;
+		mi_priv_liczba = priv;
+	}
+protected:
+	 int mi_prot_liczba=2;
+
+private:
+	 int mi_priv_liczba=3;
+
+};
+
+
+int main()
+{
+
+	A a;
+	int* arr = a.pokazLiczbe();
+
+	for (int i = 0; i < 3; i++) {
+		cout << arr[i] << endl;
+	}
+
+	cout << endl;
+	a.przypiszWartosc(9, 10, 11);
+	arr = a.pokazLiczbe();
+
+	for (int i = 0; i < 3; i++) {
+		cout << arr[i] << endl;
+	}
+}
